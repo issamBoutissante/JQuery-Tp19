@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercice 3</title>
+    <style>
+      h1 {
+        color: white;
+      }
+      center {
+        background-color: green;
+      }
+      ul {
+        list-style: none;
+      }
+      li {
+        background-color: white;
+        width: 100px;
+        padding: 5px;
+        margin-bottom: 10px;
+      }
+      div {
+        margin-top: 60px;
+        padding-left: 40px;
+        padding-bottom: 40px;
+      }
+      button:first-child {
+        color: gray;
+      }
+      button:last-child {
+        border: 0;
+        border-radius: 8px;
+        outline: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <h1>Construire une liste d'elements</h1>
+      <ul>
+        <li>Element1</li>
+      </ul>
+      <div>
+        <button id="elemer">Elemer</button>
+        <button id="ajouter">Ajouter</button>
+      </div>
+    </center>
+  </body>
+  <script src="./jquery.js"></script>
+  <script>
+    $(function () {
+      var i = 1;
+      $("#ajouter").click(() => {
+        $("ul").append(`<li>Element ${++i}</li>`);
+      });
+      $("ul").on("click", "li", function () {
+        $(this).remove();
+      });
+    });
+  </script>
+</html>

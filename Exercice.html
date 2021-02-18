@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercice 1</title>
+  </head>
+  <body>
+    <input type="text" />
+  </body>
+  <script src="./jquery.js"></script>
+  <script>
+    $(function () {
+      $("input").keyup(function (e) {
+        if (e.target.value == "41") {
+          alert("quarante-et-un ");
+        }
+      });
+    });
+  </script>
+  <script src="./jquery"></script>
+  <script>
+    $(function () {
+      var nombre1 = [
+        "zero",
+        "un",
+        "deux",
+        "trois",
+        "quatre",
+        "cinq",
+        "six",
+        "sept",
+        "huit",
+        "neuf",
+        "dix",
+        "onze",
+        "douze",
+        "treize",
+        "quatorze",
+        "quinze",
+        "seize",
+        "dix-sept",
+        "dix-huit",
+        "dix-neuf",
+      ];
+      var nombre2 = [
+        "",
+        "",
+        "vingt",
+        "trente",
+        "quarante",
+        "cinquante",
+        "soixante",
+        "soixante",
+        "quatre-vingts",
+        "quatre-vingts",
+      ];
+      function Converter(nombre) {
+        if (nombre.length == 1 || parseInt(nombre) < 20) {
+          alert(nombre1[parseInt(nombre)]);
+        } else if (nombre.length == 2 && parseInt(nombre) < 60) {
+          alert(
+            `${nombre2[parseInt(nombre[0])]} -et- ${
+              nombre1[parseInt(nombre[1])]
+            }`
+          );
+        } else if (nombre.length == 2 && parseInt(nombre[0]) % 2 == 0) {
+          alert(
+            `${nombre2[parseInt(nombre[0])]} -et- ${
+              nombre1[parseInt(nombre[1])]
+            }`
+          );
+        } else if (nombre.length == 2) {
+          alert(
+            `${nombre2[parseInt(nombre[0])]}-${
+              nombre1[parseInt("1" + nombre[1])]
+            }`
+          );
+        }
+      }
+      Converter("99");
+    });
+  </script>
+</html>
