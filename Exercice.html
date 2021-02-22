@@ -6,19 +6,10 @@
     <title>Exercice 1</title>
   </head>
   <body>
-    <input type="text" />
+    <input type="number" />
+    <button>Convert</button>
   </body>
   <script src="./jquery.js"></script>
-  <script>
-    $(function () {
-      $("input").keyup(function (e) {
-        if (e.target.value == "41") {
-          alert("quarante-et-un ");
-        }
-      });
-    });
-  </script>
-  <script src="./jquery"></script>
   <script>
     $(function () {
       var nombre1 = [
@@ -55,30 +46,55 @@
         "quatre-vingts",
         "quatre-vingts",
       ];
-      function Converter(nombre) {
-        if (nombre.length == 1 || parseInt(nombre) < 20) {
-          alert(nombre1[parseInt(nombre)]);
-        } else if (nombre.length == 2 && parseInt(nombre) < 60) {
-          alert(
-            `${nombre2[parseInt(nombre[0])]} -et- ${
-              nombre1[parseInt(nombre[1])]
-            }`
-          );
-        } else if (nombre.length == 2 && parseInt(nombre[0]) % 2 == 0) {
-          alert(
-            `${nombre2[parseInt(nombre[0])]} -et- ${
-              nombre1[parseInt(nombre[1])]
-            }`
-          );
-        } else if (nombre.length == 2) {
-          alert(
-            `${nombre2[parseInt(nombre[0])]}-${
-              nombre1[parseInt("1" + nombre[1])]
-            }`
-          );
+
+      function NombreEntre_0_99(nombre) {
+        //si "nombre" inferieur de 20
+        if (parseInt(nombre) < 20) {
+          return nombre1[parseInt(nombre)];
         }
+        if (nombre[1] == 0) {
+          if (nombre == "70") {
+            return "soixante-dix";
+          }
+          if (nombre == "90") {
+            return "quatre-vingts-dix";
+          }
+          return nombre2[nombre[0]];
+        }
+        //si "nombre" inferieur de 60
+        if (parseInt(nombre) < 60) {
+          return `${nombre2[parseInt(nombre[0])]}-et-${
+            nombre1[parseInt(nombre[1])]
+          }`;
+        }
+        //si "nombre" entre 60 et 99 et paire
+        if (parseInt(nombre[0]) % 2 == 0) {
+          return `${nombre2[parseInt(nombre[0])]}-et-${
+            nombre1[parseInt(nombre[1])]
+          }`;
+        }
+
+        //si "nombre" entre 60 et 99 et impaire
+        return `${
+          nombre2[parseInt(nombre[0])]
+        }-${nombre1[parseInt("1" + nombre[1])]}`;
       }
-      Converter("99");
+      function NombreEntre_100_999(nombre) {
+        if (nombre == "100") {
+          return "cent";
+        }
+        return `${
+          nombre1[parseInt(nombre[0])]
+        } cent-et-${NombreEntre_0_99(`${nombre[1]}${nombre[2]}`)}`;
+      }
+      $("button").click(function () {
+        var nombre = $("input").val();
+        if (nombre.length <= 2) {
+          alert(NombreEntre_0_99(nombre));
+          return;
+        }
+        alert(NombreEntre_100_999(nombre));
+      });
     });
   </script>
 </html>
