@@ -25,10 +25,10 @@
         padding-left: 40px;
         padding-bottom: 40px;
       }
-      button:first-child {
-        color: gray;
+      input {
+        width: 50px;
       }
-      button:last-child {
+      button {
         border: 0;
         border-radius: 8px;
         outline: 0;
@@ -42,7 +42,7 @@
         <li>Element1</li>
       </ul>
       <div>
-        <button id="elemer">Elemer</button>
+        <input type="text" placeholder="element" />
         <button id="ajouter">Ajouter</button>
       </div>
     </center>
@@ -50,9 +50,8 @@
   <script src="./jquery.js"></script>
   <script>
     $(function () {
-      var i = 1;
       $("#ajouter").click(() => {
-        $("ul").append(`<li>Element ${++i}</li>`);
+        $("ul").append(`<li>${$("input:first").val()}</li>`);
       });
       $("ul").on("click", "li", function () {
         $(this).remove();

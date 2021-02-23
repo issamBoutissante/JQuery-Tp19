@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exercice 1</title>
-  </head>
-  <body>
-    <center style="margin-top: 20%;">
-      <input type="text" /><br><br>
-      <input type="text" readonly></input>
-    </center>
-  </body>
-  <script src="./jquery.js"></script>
-  <script>
-    $(function () {
+$(function () {
   var unites = [
     "zero",
     "un",
@@ -97,6 +82,3 @@
     $("input:last").val(NombreEntre_100_999(nombre));
   });
 });
-
-  </script>
-</html>
